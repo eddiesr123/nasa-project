@@ -8,6 +8,7 @@ const planetsRouter = require("./routes/planets/planets.router");
 
 const app = express();
 
+app.use(cors({ origin: "http://localhost:3000" }));
 // const accessLogStream = fs.createWriteStream(
 //   path.join(__dirname, "access.log"),
 //   { flags: "a" }
@@ -15,7 +16,6 @@ const app = express();
 
 // app.use(morgan("combined", { stream: accessLogStream }));
 
-app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
