@@ -3,7 +3,7 @@ const app = require("../../app");
 
 const { mongoConnect, mongoDisconnect } = require("../../services/mongo");
 
-describe("Test GET /planets", () => {
+describe("Test GET /v1/planets", () => {
   beforeAll(async () => {
     await mongoConnect();
   });
@@ -14,7 +14,7 @@ describe("Test GET /planets", () => {
 
   test("It should respond with 200 success", async () => {
     await request(app)
-      .get("/planets")
+      .get("/v1/planets")
       .expect("Content-type", /json/)
       .expect(200);
   });

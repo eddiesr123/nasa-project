@@ -11,16 +11,16 @@ describe("Launches API", () => {
     await mongoDisconnect();
   });
 
-  describe("Test GET /launches", () => {
+  describe("Test GET /v1/launches", () => {
     test("It should respond with 200 success", async () => {
       await request(app)
-        .get("/launches")
+        .get("/v1/launches")
         .expect("Content-type", /json/)
         .expect(200);
     });
   });
 
-  describe("Test POST /launches", () => {
+  describe("Test POST /v1/launches", () => {
     const formDataMinusDate = {
       mission: "Kepler Exploration X",
       rocket: "Explorer IS1",
@@ -36,7 +36,7 @@ describe("Launches API", () => {
 
     test("It should respond with 201 success", async () => {
       const response = await request(app)
-        .post("/launches")
+        .post("/v1/launches")
         .set("Accept", "application/json")
         .send(requestBody)
         .expect("Content-type", /json/)
@@ -51,7 +51,7 @@ describe("Launches API", () => {
 
     test("It should catch missing required properties", async () => {
       const response = await request(app)
-        .post("/launches")
+        .post("/v1/launches")
         .set("Accept", "application/json")
         .send(formDataMinusDate)
         .expect("Content-type", /json/)
@@ -66,7 +66,7 @@ describe("Launches API", () => {
 
     test("It should catch invalid date", async () => {
       const response = await request(app)
-        .post("/launches")
+        .post("/v1/launches")
         .set("Accept", "application/json")
         .send(requestWithInvalidDate)
         .expect("Content-type", /json/)
@@ -80,10 +80,10 @@ describe("Launches API", () => {
     });
   });
 
-  // describe("Test DELETE /launches", () => {
+  // describe("Test DELETE /v1/launches", () => {
   //   test("It should respond with 200 success", async () => {
   //     const response = await request(app)
-  //       .delete("/launches/100")
+  //       .delete("/v1/launches/100")
   //       .expect("Content-type", /json/)
   //       .expect(200);
 
@@ -98,7 +98,7 @@ describe("Launches API", () => {
 
   //   test("It should respond with 404 Not Found", async () => {
   //     const response = await request(app)
-  //       .delete("/launches/232")
+  //       .delete("/v1/launches/232")
   //       .expect("Content-type", /json/)
   //       .expect(404);
 
