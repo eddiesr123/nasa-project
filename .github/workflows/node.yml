@@ -1,7 +1,7 @@
 name: NASA Project CI
 on:
   push:
-    branches: [feature/*, bugfix/*]
+    branches: [main, feature/*, bugfix/*]
   pull_request:
     branches: [main]
 jobs:
