@@ -1,0 +1,12 @@
+name: Test
+
+on:
+  workflow_run:
+    workflows: [NASA Project CI]
+    types: [completed]
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Ran triggered workflow"
